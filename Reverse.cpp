@@ -40,7 +40,34 @@ int Reverse::reverseDigit(int number)
     }
 }
 
-std::string Reverse::reverseString(std::string)
+std::string Reverse::reverseString(std::string word)
 {
-    return "yAY";
+    // putting the string into a special string to use string functions
+    std::string str (word);
+    std::string reversedWord = "";
+    int length = 0;
+    std::string lastLetter;
+
+    if (word == "")
+    {
+        return reversedWord;
+    }
+    else
+    {
+        // getting the last letter of the word
+        lastLetter = str.back();
+
+        // deleting the last letter of the word
+        // requires c++11
+        str.pop_back();
+
+        // appending last letter
+        reversedWord = reversedWord + lastLetter;
+        // getting the next letter with reccursion
+        reversedWord = reversedWord + reverseString(str); 
+
+        return reversedWord;
+    }
+
+    
 }
